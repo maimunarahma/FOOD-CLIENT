@@ -14,19 +14,20 @@ const Login = () => {
 
     }
     return (
-        <div>
-           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <form className="card-body" onSubmit={handleLogin}>
+        <div className="bg-red-500 my-20">
+           <div className="card bg-base-100 w-full  max-w-sm shrink-0 shadow-2xl">
+      <form className="" onSubmit={handleLogin}>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Email</span>
+            <span className="label-text">Email:</span>
           </label>
-          <input type="email" placeholder="email" name='email' className="input input-bordered" required />
+            <input type="email" placeholder="email" name='email' className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
-          </label>
+          </label>  
+
           <input type="password" placeholder="password" name='pass' className="input input-bordered" required />
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>

@@ -15,6 +15,9 @@ import Private from './Providers/Private';
 import AddFood from './Pages/Home/AddFood';
 import FoodRequest from './Pages/Home/FoodRequest';
 import Banner from './Pages/Home/Banner';
+import AvailableFoods from './Pages/Home/AvailableFoods';
+import Details from './Pages/Home/Details';
+
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,9 @@ const router = createBrowserRouter([
     },{
       path:'/login',
       element:<Login></Login>
+    },{
+  path:'/availaleFoods',
+  element:<AvailableFoods></AvailableFoods>,
     },
    {
     path:'/register',
@@ -40,7 +46,10 @@ const router = createBrowserRouter([
    },{
     path:'/reqFood',
     element:<Private><FoodRequest></FoodRequest></Private>
-   }
+   },{
+    path:'/details/:id',
+   element:<Details></Details>,
+   loader:({params})=> fetch(`httphttp://localhost:5173/details/${params.id}`)    }
   ]
   },
 ]);
