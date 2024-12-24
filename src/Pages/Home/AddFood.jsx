@@ -5,7 +5,34 @@ const AddFood = () => {
   const handleAddFood = (e) => {
     e.preventDefault();
     // Handle form submission
-  };
+    const form=e.target;
+  const foodName=form.name.value;
+
+  const foodImg=form.pic.value;
+  const foodQuantity=form.quantity.value;
+  const pickupLocation=form.location.value;
+  const additionalNotes=form.notes.value;
+  const expireDate=form.exp.value;
+  const  food={foodName,foodImg,foodQuantity,pickupLocation,additionalNotes,expireDate}
+  fetch('http://localhost:4000/featured',
+    {
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(food)
+    })
+      .then(res=> res.json())
+      .then(data=>{ console.log(data)
+
+
+        if(data.insertedId){
+          alert('Food added successfully')
+        }
+      })
+}
+  
+  
 
   const { user } = useContext(AuthContext);
 
