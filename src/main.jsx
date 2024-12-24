@@ -16,8 +16,11 @@ import AddFood from './Pages/Home/AddFood';
 import FoodRequest from './Pages/Home/FoodRequest';
 import Banner from './Pages/Home/Banner';
 import AvailableFoods from './Pages/Home/AvailableFoods';
+<<<<<<< HEAD
 import Details from './Pages/Home/Details';
 
+=======
+>>>>>>> 8e0e5e4105771fd455c86acb8d7ea952fbbd1c52
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,10 @@ const router = createBrowserRouter([
     },{
   path:'/availaleFoods',
   element:<AvailableFoods></AvailableFoods>,
+<<<<<<< HEAD
+=======
+  loader:()=>fetch('http://localhost:4000/featured')
+>>>>>>> 8e0e5e4105771fd455c86acb8d7ea952fbbd1c52
     },
    {
     path:'/register',

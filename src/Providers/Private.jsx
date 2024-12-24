@@ -8,7 +8,7 @@ const Private = ({children}) => {
     if(user)
         return children;
 
-    return (
+ else   return (
 
       <Navigate to='/login'></Navigate>
     );
