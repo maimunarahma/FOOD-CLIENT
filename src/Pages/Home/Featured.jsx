@@ -6,7 +6,7 @@ const Featured = () => {
   const [foods,setFoods]=useState([])
   useEffect(() => {
     // Fetch data only once when the component mounts
-    axios.get("http://localhost:4000/featured",foods)
+    axios.get("http://localhost:4000/featured?limit=6")
       .then((res) => {
         setFoods(res.data);
       })

@@ -15,6 +15,7 @@ import Private from './Providers/Private';
 import AddFood from './Pages/Home/AddFood';
 import FoodRequest from './Pages/Home/FoodRequest';
 import Banner from './Pages/Home/Banner';
+import AvailableFoods from './Pages/Home/AvailableFoods';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
     },{
       path:'/login',
       element:<Login></Login>
+    },{
+  path:'/availaleFoods',
+  element:<AvailableFoods></AvailableFoods>,
+  loader:()=>fetch('http://localhost:4000/featured')
     },
    {
     path:'/register',
