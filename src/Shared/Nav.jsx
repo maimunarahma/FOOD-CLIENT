@@ -46,7 +46,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/manageFood" className="hover:text-orange-600 transition duration-300">
+                <Link to="/myRequests" className="hover:text-orange-600 transition duration-300">
                   MY FOOD REQUEST
                 </Link>
               </li>
