@@ -19,12 +19,14 @@ import AvailableFoods from './Pages/Home/AvailableFoods';
 import Details from './Pages/Home/Details';
 import Update from './Pages/Home/Update';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Error404 from './Pages/Home/Error404';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<Error404></Error404>,
     children:[{
       path:'/',
       element:<Banner></Banner>
