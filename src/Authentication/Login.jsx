@@ -3,6 +3,9 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../Firebase/Firebase.init";
 
 const Login = () => {
   const { loginUser, setLoading } = useContext(AuthContext);
@@ -32,6 +35,24 @@ const Login = () => {
         console.error("Login failed:", err); // Add error handling for login failure
       });
   };
+  const provider = new GoogleAuthProvider();
+  const handleGoogleSignUp = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log("Google Sign-In Success:", result.user);
+        toast.success("Logged in with Google! 🎉", {
+          position: "top-center",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Google Sign-In Error:", error);
+        toast.error("Google login failed! ", {
+          position: "top-center",
+        });
+        navigate("/");
+      });
+  }
 
   return (
     <div className="bg-gray-100 flex justify-between items-center h-screen bg-cover bg-[url('https://i.ibb.co/svqbXKm/elegant-black-plate-gourmet-food-arrangement-showcasing-artistic-minimalist-food-styling-dark-backgr.webp')]">
@@ -81,6 +102,10 @@ const Login = () => {
               </Link>
             </h2>
           </div>
+          <div className="flex flex-col justify-center items-center">
+          <h1>OR</h1>
+          <button onClick={handleGoogleSignUp} className="btn"><FcGoogle /> Login With Google</button>
+        </div>
         </form>
       </div>
 
@@ -91,6 +116,7 @@ const Login = () => {
           alt="Food"
         /> */}
       </div>
+     
     </div>
   );
 };
