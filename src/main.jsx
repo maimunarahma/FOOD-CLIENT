@@ -18,8 +18,8 @@ import Banner from './Pages/Home/Banner';
 import AvailableFoods from './Pages/Home/AvailableFoods';
 import Details from './Pages/Home/Details';
 import Update from './Pages/Home/Update';
-
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -75,9 +75,13 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <AuthProvider>
+     <QueryClientProvider client={queryClient}>
+
+     <AuthProvider>
    <RouterProvider router={router} />
    </AuthProvider>
+     </QueryClientProvider>
+   
   
    
   </StrictMode>,

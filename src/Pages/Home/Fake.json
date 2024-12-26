@@ -155,8 +155,7 @@
       "rating": 4.7,
       "restaurantName": "Steak Haven"
     },
-    [
-        {
+      {
           "foodName": "Fish Tacos",
           "foodImg": "https://i.ibb.co.com/kMDDQK1/20220826154338-spicy-20baja-20shrimp-20tacos-20img-206.webp",
           "foodQuantity": 5,
@@ -278,5 +277,5 @@
         }
       ]
       
-  ]
+  
   
