@@ -2,6 +2,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const AddFood = () => {
+ 
+
+  const { user } = useContext(AuthContext);
+
   const handleAddFood = (e) => {
     e.preventDefault();
     // Handle form submission
@@ -14,7 +18,7 @@ const AddFood = () => {
   const additionalNotes=form.notes.value;
   const expireDate=form.exp.value;
   const  food={foodName,foodImg,foodQuantity,pickupLocation,additionalNotes,expireDate}
-  fetch('http://localhost:4000/featured',
+  fetch(`http://localhost:4000/featured/${user.email}`,
     {
       method:'POST',
       headers:{
@@ -26,15 +30,13 @@ const AddFood = () => {
       .then(data=>{ console.log(data)
 
 
-        if(data.insertedId){
+        if(data.insertedId>0){
           alert('Food added successfully')
         }
       })
 }
   
   
-
-  const { user } = useContext(AuthContext);
 
   return (
     <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 p-8 rounded-lg shadow-lg max-w-2xl mx-auto mt-10">

@@ -13,14 +13,19 @@
     "@tanstack/react-query": "^5.62.8",
     "axios": "^1.7.9",
     "firebase": "^11.1.0",
+    "jsonwebtoken": "^9.0.2",
     "localforage": "^1.10.0",
     "match-sorter": "^8.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.0",
     "react-slick": "^0.30.3",
+    "react-toastify": "^11.0.2",
     "slick-carousel": "^1.8.1",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "swal": "^0.1.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.15.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

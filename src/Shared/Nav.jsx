@@ -29,7 +29,7 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <Link to="/availaleFoods" className="hover:text-orange-600 transition duration-300">
+            <Link to={user?.email ? `/availableFoods/${user.email}` : '/availableFoods'} className="hover:text-orange-600 transition duration-300">
               AVAILABLE FOODS
             </Link>
           </li>
@@ -46,12 +46,12 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/myRequests" className="hover:text-orange-600 transition duration-300">
+                <Link  to={`/myRequests/${user.email}`}  className="hover:text-orange-600 transition duration-300">
                   MY FOOD REQUEST
                 </Link>
               </li>
               <li>
-                <Link to="/reqFood" className="hover:text-orange-600 transition duration-300">
+                <Link to={`/manageFood/${user.email}`} className="hover:text-orange-600 transition duration-300">
                   MANAGE MY FOODS
                 </Link>
               </li>
@@ -108,7 +108,7 @@ const Nav = () => {
               <Link to="/">HOME</Link>
             </li>
             <li>
-              <Link to="/availaleFoods">AVAILABLE FOODS</Link>
+              <Link to={user?.email ? `/availableFoods/${user.email}` : '/availableFoods'} >AVAILABLE FOODS</Link>
             </li>
             <li>
               <Link to="/most-popular">MOST POPULAR</Link>
@@ -119,10 +119,10 @@ const Nav = () => {
                   <Link to="/addFood">ADD FOODS</Link>
                 </li>
                 <li>
-                  <Link to="/manageFood">MY FOOD REQUEST</Link>
+                  <Link  to={`/myRequests/${user.email}`}>MY FOOD REQUEST</Link>
                 </li>
                 <li>
-                  <Link to="/reqFood">MANAGE MY FOODS</Link>
+                  <Link to={`/manageFood/${user.email}`} >MANAGE MY FOODS</Link>
                 </li>
               </>
             )}

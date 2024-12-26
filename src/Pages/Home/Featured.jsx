@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CustomerTestimonials from "./CustomerTestimonial";
 
 const Featured = () => {
   const [foods,setFoods]=useState([])
@@ -19,9 +20,9 @@ const Featured = () => {
       });
   }, []);
     return (
+  <div>
 
-     
-        <div className="py-12 bg-gray-300">
+<div className="py-12 bg-gray-300">
         <h1 className="text-5xl font-bold text-center text-red-600 mb-8">Featured Foods</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 container mx-auto">
             {foods.map((food) => (
@@ -48,6 +49,10 @@ const Featured = () => {
         </div>
       <Link><button className="btn bg-red-600 text-white">SHOW ALL</button></Link>  
     </div>
+     <CustomerTestimonials></CustomerTestimonials>
+  </div>
+     
+     
     
     );
 };
