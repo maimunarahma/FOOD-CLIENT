@@ -1,4 +1,5 @@
 import React from 'react';
+import OffersSection from './OffersSection';
 
 const TopRatedFoods = () => {
     const topRated = [
@@ -47,6 +48,7 @@ const TopRatedFoods = () => {
     ];
 
     return (
+        <div>
         <section className="bg-gradient-to-br from-gray-800 to-gray-600 py-16 text-white">
             <h2 className="text-4xl font-extrabold text-center mb-10">Top-Rated Foods</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4">
@@ -74,6 +76,8 @@ const TopRatedFoods = () => {
                 ))}
             </div>
         </section>
+        <OffersSection/>
+        </div>
     );
 };
 

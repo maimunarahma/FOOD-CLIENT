@@ -32,6 +32,8 @@ const ManageFood = () => {
     
     
     console.log(foods)
+
+  
     const handleDelete = (id) => {
         console.log(id)
         Swal.fire({
@@ -75,7 +77,7 @@ const ManageFood = () => {
 
     return (
         <div className="bg-gradient-to-br mt-20 from-gray-50 to-gray-200 min-h-screen p-12">
-            <h1 className="text-5xl font-extrabold text-center text-gray-900 mb-10">Manage Foods</h1>
+            <h1 className="text-5xl font-extrabold text-center text-red-500 mb-10">Manage Foods</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                 {foods.map((food) => (
                     <div
@@ -105,7 +107,7 @@ const ManageFood = () => {
 
                             <div className="mt-6 space-x-4 flex justify-between">
                                 <Link to={`/update/${food._id}`}>
-                                    <button className=" py-3 px-6 bg-orange-600 text-white font-semibold rounded-lg shadow-md hover:bg-orange-700 transition-colors duration-200">
+                                    <button className=" py-3 px-6 border-2 btn-outline btn-error bg-orange-100 text-gray-300 font-semibold rounded-lg shadow-md hover:bg-orange-700 transition-colors duration-200">
                                         Edit Food
                                     </button>
                                 </Link>
@@ -115,6 +117,7 @@ const ManageFood = () => {
                                 >
                                     Delete
                                 </button>
+                             
                             </div>
                         </div>
                     </div>

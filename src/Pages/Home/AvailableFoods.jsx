@@ -1,18 +1,28 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 const AvailableFoods = () => {
+  // let [loading, setLoading] = useState(true);
+  // let [color, setColor] = useState("#ffffff");
   const [foods, setFoods] = useState([]); // State to store fetched food data
   const [sorted, setSorted] = useState(false);
   const [searchQuery, setSearchQuery] = useState(""); // State for the search query
   const { email } = useParams();
-
+console.log(email);
   // Fetch data based on sorting and email
+  const [click,setClick]=useState(false);
+
+  const handleFood=()=>{
+ setClick(!click);
+  }
+  console.log(click);
   useEffect(() => {
     const fetchFoods = async () => {
       const endpoint = email
-        ? `http://localhost:4000/featured/${email}?sortBy=${sorted ? "expireDate" : ""}`
-        : `http://localhost:4000/featured?sortBy=${sorted ? "expireDate" : ""}`;
+      ? `http://localhost:4000/featured?email=${click?email:""}&sortBy=${sorted?"expireDate":""}`
+      : `http://localhost:4000/featured?sortBy=${sorted?"expireDate":""}`;
 
       try {
         const response = await fetch(endpoint);
@@ -22,16 +32,18 @@ const AvailableFoods = () => {
 
         const data = await response.json();
         setFoods(data); // Update state with fetched data
+        console.log(foods);
       } catch (err) {
         console.error("Error fetching foods:", err);
       }
     };
 
     fetchFoods();
-  }, [email, sorted]); // Trigger fetch on email or sorted change
+  }, [email, sorted,click]); // Trigger fetch on email or sorted change
 
   // Toggle sorting state
   const handleSorted = () => setSorted((prev) => !prev);
+
   const [isGrid, setIsGrid] = useState(true); // Initial state is grid
 
   const toggleLayout = () => {
@@ -46,8 +58,9 @@ const AvailableFoods = () => {
   // Filter foods based on search query
   const filteredFoods = foods.filter((food) =>
     food.foodName.toLowerCase().includes(searchQuery.toLowerCase())
+  //  &&(!click || food.donorEmail === email) 
   );
-
+  console.log(filteredFoods);
   return (
     <div>
       <div className="py-16 bg-gray-100">
@@ -71,6 +84,7 @@ const AvailableFoods = () => {
           </button>
 
           {/* Layout Toggle Button */}
+          
           <button
             onClick={toggleLayout}
             className="mb-4 px-4 py-2 bg-blue-500 text-white rounded-md"
@@ -87,7 +101,8 @@ const AvailableFoods = () => {
               : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12"
           } container mx-auto`}
         >
-          {filteredFoods.length > 0 ? (
+         
+           {filteredFoods.length > 0 ? (
             filteredFoods.map((food) => (
               <div
                 key={food._id}
@@ -132,9 +147,11 @@ const AvailableFoods = () => {
             ))
           ) : (
             <p className="text-center text-gray-600 col-span-full">
-              No foods available at the moment.
+            <ClipLoader
+        
+      />
             </p>
-          )}
+          )} 
         </div>
       </div>
     </div>

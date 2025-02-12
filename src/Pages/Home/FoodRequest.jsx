@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const FoodRequest = () => {
   const [reqFood, setReqFood] = useState([]);
@@ -19,7 +20,7 @@ const FoodRequest = () => {
     <div className="min-h-screen bg-gray-100 py-10 mt-20 ">
       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">My Food Requests</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
-        {reqFood.map((food) => (
+        {reqFood.length>0 ? reqFood.map((food) => (
           <div
             key={food._id}
             className="relative bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105"
@@ -43,7 +44,10 @@ const FoodRequest = () => {
               </div>
             </div>
           </div>
-        ))}
+        )): 
+        <div className="text-center text-red-600 col-span-full">
+        <ClipLoader/>
+        </div>}
       </div>
     </div>
   );

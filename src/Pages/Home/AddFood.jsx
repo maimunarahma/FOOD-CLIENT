@@ -15,9 +15,10 @@ const AddFood = () => {
   const foodImg=form.pic.value;
   const foodQuantity=form.quantity.value;
   const pickupLocation=form.location.value;
-  const additionalNotes=form.notes.value;
+  const price=form.price.value;
   const expireDate=form.exp.value;
-  const  food={foodName,foodImg,foodQuantity,pickupLocation,additionalNotes,expireDate}
+  const rating=form.rating.value;
+  const  food={foodName,foodImg,foodQuantity,pickupLocation,price,rating,expireDate}
   fetch(`http://localhost:4000/featured/${user.email}`,
     {
       method:'POST',
@@ -50,6 +51,18 @@ const AddFood = () => {
             type="text"
             placeholder="Enter food name"
             name="name"
+            className="input input-bordered w-full border-purple-400 focus:ring-2 focus:ring-purple-600"
+            required
+          />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text font-medium text-purple-700">Food Price</span>
+          </label>
+          <input
+            type="number"
+            placeholder="Enter food name"
+            name="price"
             className="input input-bordered w-full border-purple-400 focus:ring-2 focus:ring-purple-600"
             required
           />
@@ -108,14 +121,14 @@ const AddFood = () => {
 
         <div className="form-control">
           <label className="label">
-            <span className="label-text font-medium text-purple-700">Additional Notes</span>
+            <span className="label-text font-medium text-purple-700">Rating</span>
           </label>
-          <textarea
+          <input
             placeholder="Add any additional information"
-            name="notes"
+            name="rating" type="number"
             className="textarea textarea-bordered w-full border-purple-400 focus:ring-2 focus:ring-purple-600"
             required
-          ></textarea>
+          />
         </div>
 
         <div className="form-control">
